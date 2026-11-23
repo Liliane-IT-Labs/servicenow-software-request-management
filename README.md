@@ -99,16 +99,8 @@ IT SUPPORT / CATALOG TASK
    |
    | Joshua Anderson
    v
-APPROVAL (IF REQUIRED)
-   |
-   v
-AUTHORIZED SOFTWARE INSTALLATION
-   |
-   v
-VERIFICATION & REQUEST CLOSURE
-```
 
-The initial lab demonstrates request creation and submission. The later stages represent the complete business workflow.
+```
 
 ---
 
