@@ -449,7 +449,3 @@ This project demonstrates practical IT Service Management skills involving Servi
 **Important ServiceNow distinction:** An Incident is generally used to restore a disrupted service. A Service Catalog Request is appropriate for obtaining software. Also, assignment, priority, and due-date fields depend on the instance configuration; they might belong to the RITM or a Catalog Task.&#x20;
 
 
-
-**Recommended GitHub description:** *End-to-end ServiceNow IT Service Catalog project demonstrating software installation requests, REQ/RITM tracking, task assignment, Windows security, and IT support workflow.*
-
-You can use the official [ServiceNow documentation](https://www.servicenow.com/docs/r/it-service-management/incident-management/create-an-incident.html?utm_source=chatgpt.com) for comparison, but the README above intentionally uses the Service Catalog workflow rather than converting the request into an incident.
