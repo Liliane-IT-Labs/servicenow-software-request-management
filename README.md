@@ -1,12 +1,3 @@
-I've rewritten the project entirely for **ServiceNow**, replacing Issue Trax with the Service Catalog and its request management workflow.
-
-The original CompTIA scenario stays the same: an employee needs Audacity installed but lacks administrator privileges. In ServiceNow, this is best handled as a **Service Request (REQ/RITM)** rather than an Incident, because the employee is requesting software, not reporting a broken service.&#x20;
-
-[image](https://www.google.com/s2/favicons?domain=https://umd.service-now.com\&sz=32)
-
-IT Service Desk+1
-
-
 
 # ServiceNow IT Support Project: Software Installation Request Management
 
@@ -164,6 +155,7 @@ The employee must request assistance through the approved IT process.
 The Service Catalog provides a structured way for employees to request IT services without contacting individual technicians directly.
 
 **Screenshot 1: ServiceNow Service Catalog**
+<img width="899" height="856" alt="image" src="https://github.com/user-attachments/assets/d5288bd6-e5c1-4d28-b89d-a7a9d01b9552" />
 
 Capture the catalog page showing the software request option.
 
@@ -190,6 +182,7 @@ Capture the catalog page showing the software request option.
 Clear documentation allows the IT team to understand the request without unnecessary back-and-forth communication.
 
 **Screenshot 2: Software Request Form**
+<img width="899" height="820" alt="image" src="https://github.com/user-attachments/assets/6ed3407f-de77-4e6a-890c-48a72585b910" />
 
 Capture the request summary and business justification before submission.
 
@@ -214,6 +207,7 @@ If the catalog item does not provide dedicated contact or device fields, include
 **Why this matters:**
 
 Accurate device and contact information helps the technician prepare for the installation and reduces troubleshooting delays.
+<img width="895" height="824" alt="image" src="https://github.com/user-attachments/assets/50dc57fd-b252-4f30-972c-d06c503487ad" />
 
 ### Step 5 — Submit the Software Request
 
@@ -235,6 +229,12 @@ ServiceNow records the software request and, in a standard catalog workflow, gen
 **Screenshot 3: Submitted Request**
 
 Capture the generated REQ/RITM number and request details.
+<img width="905" height="549" alt="image" src="https://github.com/user-attachments/assets/55a2b09c-d741-4531-af10-53859c27a242" />
+
+---
+
+<img width="938" height="869" alt="image" src="https://github.com/user-attachments/assets/c73c6bb2-eec8-4cd4-9fe8-28f9511ebbd3" />
+
 
 ---
 
@@ -257,6 +257,7 @@ Capture the generated REQ/RITM number and request details.
 A Requested Item represents the specific service or item being requested. It allows the IT team to track fulfillment separately from the overall request.
 
 **Screenshot 4: Requested Item Details**
+<img width="913" height="885" alt="image" src="https://github.com/user-attachments/assets/dc8b1641-e30f-4e33-942a-22424ec9f700" />
 
 Capture the RITM record showing Audacity and the request information.
 
@@ -302,9 +303,8 @@ Priority and due dates help support teams organize work and manage expectations.
 
 Ticket assignment creates accountability by identifying who is responsible for progressing the work.
 
-**Important:** Joshua Anderson must exist as an authorized user in the ServiceNow instance. If the user is unavailable, document the required assignee and do not substitute another technician without noting the difference.
-
 **Screenshot 5: Technician Assignment**
+<img width="911" height="595" alt="image" src="https://github.com/user-attachments/assets/07815d82-6497-4155-9c33-3e5c785c329c" />
 
 Capture the request or catalog task showing Joshua Anderson as the assignee.
 
@@ -334,6 +334,7 @@ Review the submitted ServiceNow record and confirm:
 Verification prevents misrouted tickets, missing information, and unnecessary delays.
 
 **Screenshot 6: Final Request Verification**
+<img width="942" height="845" alt="image" src="https://github.com/user-attachments/assets/49e324c5-dee1-4f31-8785-3f6d2ff499f4" />
 
 Capture the final ServiceNow record showing the request details, assignment, and current status.
 
@@ -444,30 +445,10 @@ This project demonstrates practical IT Service Management skills involving Servi
 
 **Author:** Liliane Konissi
 
-## **Your GitHub screenshot plan**
-
-Capture these six screenshots from your actual ServiceNow environment. This is the recommended order for the README.
-
-| Screenshot | What to capture            | GitHub filename               |
-| ---------- | -------------------------- | ----------------------------- |
-| 1          | Service Catalog            | `01-service-catalog.png`      |
-| 2          | Audacity request form      | `02-software-request.png`     |
-| 3          | Submitted REQ/RITM         | `03-submitted-request.png`    |
-| 4          | Requested Item details     | `04-requested-item.png`       |
-| 5          | Assigned technician/task   | `05-task-assignment.png`      |
-| 6          | Final request verification | `06-request-verification.png` |
-
-Save these in an `images` folder in your GitHub repository.
 
 **Important ServiceNow distinction:** An Incident is generally used to restore a disrupted service. A Service Catalog Request is appropriate for obtaining software. Also, assignment, priority, and due-date fields depend on the instance configuration; they might belong to the RITM or a Catalog Task.&#x20;
 
-[image](https://www.google.com/s2/favicons?domain=https://www.servicenow.com\&sz=32)
 
-ServiceNow+2
-
-
-
-**Recommended GitHub repository name:** `servicenow-software-request-management`
 
 **Recommended GitHub description:** *End-to-end ServiceNow IT Service Catalog project demonstrating software installation requests, REQ/RITM tracking, task assignment, Windows security, and IT support workflow.*
 
