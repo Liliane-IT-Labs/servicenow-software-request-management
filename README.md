@@ -1,14 +1,24 @@
-# issue-trax-software-request-management
+I've rewritten the project entirely for **ServiceNow**, replacing Issue Trax with the Service Catalog and its request management workflow.
 
-The project focuses on **IT ticket management, software request handling, access permissions, and IT support workflow.**
+The original CompTIA scenario stays the same: an employee needs Audacity installed but lacks administrator privileges. In ServiceNow, this is best handled as a **Service Request (REQ/RITM)** rather than an Incident, because the employee is requesting software, not reporting a broken service.&#x20;
 
-# IT Help Desk Project: Managing a Software Installation Request Using Issue Trax
+[image](https://www.google.com/s2/favicons?domain=https://umd.service-now.com\&sz=32)
 
-**Project Type:** IT Help Desk | Ticket Management | Software Request
+IT Service Desk+1
 
-**Tools:** Issue Trax, Windows 11, CompTIA Lab
 
-**Skills Demonstrated:** IT Support, Ticket Creation, Request Documentation, Priority Assignment, Access Control, Ticket Routing
+
+# ServiceNow IT Support Project: Software Installation Request Management
+
+**Turning a blocked software installation into a documented, assigned, and trackable IT service request.**
+
+**Project:** IT Service Management (ITSM)
+
+**Platform:** ServiceNow
+
+**Environment:** Windows 11 | ServiceNow Developer Instance
+
+**Focus:** Service Catalog, Software Requests, Request Fulfillment, IT Security
 
 ---
 
@@ -16,308 +26,449 @@ The project focuses on **IT ticket management, software request handling, access
 
 ### The Problem
 
-A new employee working on a Windows 11 computer named **Office1** needs Audacity, a digital audio editing application, to perform work-related tasks.
+A new employee working on a Windows 11 computer named **Office1** needs Audacity, a digital audio editing application, to complete work-related tasks.
 
-When the employee attempts to install the software, Windows requests administrator credentials.
+However, when the employee attempts to install the application, Windows requests administrator credentials.
 
-The employee does not have local administrator privileges, so the installation cannot proceed.
+Because the employee has a standard user account without local administrator privileges, the installation cannot continue.
 
-**The IT challenge:** How can an employee request software without bypassing company security policies?
+The employee needs assistance from the IT Support team.
 
-### The Solution
+### The IT Solution
 
-Use the company's IT ticketing system, **Issue Trax**, to submit a documented software installation request and assign it to the appropriate IT support technician.
+I use **ServiceNow** to manage the software installation request through a structured IT service management process.
 
-This allows the Help Desk team to review the request and manage the installation through an authorized process.
+Instead of bypassing Windows security controls, the employee submits a Service Catalog request.
+
+The request is documented, tracked, and routed to an IT technician for review and authorized fulfillment.
+
+### Why ServiceNow?
+
+ServiceNow provides a centralized platform for managing employee IT requests, assigning responsibilities, tracking progress, and maintaining a history of support activities.
+
+This helps organizations manage software requests consistently while maintaining security and accountability.
+
+---
 
 ## 2. Project Objectives
 
-The goal of this project is to demonstrate how IT support teams manage employee software installation requests.
+The goal is to demonstrate how a software installation request moves through the ServiceNow request management process.
 
-By completing this project, I will demonstrate the ability to:
+**Technical objectives:**
 
-- Create and document a Help Desk ticket.
-- Record user and device information.
-- Explain the business need for software.
-- Set the appropriate ticket priority.
-- Assign the request to an IT technician.
-- Set a due date for follow-up.
-- Categorize the ticket for proper tracking.
-- Respect administrative access restrictions.
+- Submit a software installation request through the Service Catalog.
+- Document the employee's business need.
+- Capture contact and device information.
+- Create a trackable Request (REQ) and Requested Item (RITM).
+- Route the request to the appropriate IT technician.
+- Record the required priority and due date.
+- Review and verify the submitted request.
+- Understand the approval and fulfillment process.
 
 ## 3. Lab Environment
 
-| Component             | Details         |
-| --------------------- | --------------- |
-| Computer name         | Office1         |
-| Operating system      | Windows 11      |
-| Ticketing platform    | Issue Trax      |
-| Requested application | Audacity        |
-| User permissions      | Standard user   |
-| Ticket category       | Software        |
-| Priority              | High            |
-| Assigned technician   | Joshua Anderson |
+| Component           | Configuration         |
+| ------------------- | --------------------- |
+| ITSM Platform       | ServiceNow            |
+| Request Type        | Software Installation |
+| Application         | Audacity              |
+| Computer            | Office1               |
+| Device              | HP Laptop             |
+| Operating System    | Windows 11            |
+| User Access         | Standard User         |
+| Assigned Technician | Joshua Anderson       |
+| Requested Priority  | High                  |
+| Category            | Software              |
+
+**Project scope:** This walkthrough recreates the original CompTIA ticket submission scenario in ServiceNow. Software installation, approval, and closure are discussed as optional fulfillment steps and should only be marked completed after actual testing.
 
 ---
 
-## 4. Implementation: Step-by-Step
+## 4. Project Architecture
 
-### Step 1: Identify the Software Installation Problem
+```
+EMPLOYEE
+   |
+   | Needs Audacity installed
+   v
+WINDOWS 11 - OFFICE1
+   |
+   | Administrator access required
+   v
+SERVICENOW SERVICE CATALOG
+   |
+   | Submit software request
+   v
+REQUEST (REQ)
+   |
+   v
+REQUESTED ITEM (RITM)
+   |
+   | Review and assignment
+   v
+IT SUPPORT / CATALOG TASK
+   |
+   | Joshua Anderson
+   v
+APPROVAL (IF REQUIRED)
+   |
+   v
+AUTHORIZED SOFTWARE INSTALLATION
+   |
+   v
+VERIFICATION & REQUEST CLOSURE
+```
 
-**Action:**
+The initial lab demonstrates request creation and submission. The later stages represent the complete business workflow.
 
-1. Sign in to the Office1 computer.
+---
+
+# 5. Implementation: Step-by-Step
+
+## Phase 1: Employee Software Request
+
+### Step 1 — Identify the Access Restriction
+
+**Action**
+
+1. Sign in to Windows 11 on Office1.
 2. Attempt to install Audacity.
-3. Observe the Windows administrator credential prompt.
-4. Recognize that the installation requires administrative privileges.
+3. Observe the administrator credential prompt.
+4. Identify that the employee does not have administrator privileges.
+5. Do not attempt to bypass the security restriction.
 
-**Goal:** Identify why the employee cannot complete the installation independently.
+**Goal:** Understand why the employee cannot independently install the software.
 
 **Technical explanation:**
 
-Windows User Account Control (UAC) helps prevent unauthorized system changes by requiring approval or administrator credentials for certain operations.
+Windows User Account Control (UAC) protects the system by requiring appropriate authorization for administrative operations.
 
-Because the employee does not have local administrative rights, the installation must be handled through the approved IT support process.
+The employee must request assistance through the approved IT process.
 
-**Expected result:** The installation cannot continue without administrator credentials.
+**Expected result:** The employee identifies the installation blocker and requests IT assistance.
 
-**Screenshot 1:** Windows administrator credential prompt, if available in the lab.
+### Step 2 — Access ServiceNow
 
-### Step 2: Access the Help Desk Ticketing System
+**Action**
 
-**Action:**
+1. Open the ServiceNow instance.
+2. Sign in with an authorized account.
+3. Open the **All** menu or the employee self-service portal.
+4. Navigate to **Self-Service → Service Catalog**, if available.
+5. Locate the software request category or search for a software installation request item.
 
-1. Open the Issue Trax application in the CompTIA lab.
-2. Locate the ticket management interface.
-3. Find the option to create a new ticket.
-
-**Goal:** Use a centralized system to document and track the employee's request.
+**Goal:** Access the centralized platform used to manage software requests.
 
 **Why this matters:**
 
-A ticketing system creates a record of the issue so the IT team can track responsibility, communicate updates, and follow the request through resolution.
+The Service Catalog provides a structured way for employees to request IT services without contacting individual technicians directly.
 
-**Screenshot 2:** Issue Trax ticket dashboard.
+**Screenshot 1: ServiceNow Service Catalog**
 
-### Step 3: Create a New Software Request Ticket
+Capture the catalog page showing the software request option.
 
-**Action:**
+### Step 3 — Create the Software Installation Request
 
-1. Select **New Ticket** or the equivalent ticket creation option.
-2. Open the ticket submission form.
-3. Locate the Summary and Description fields.
+**Action**
 
-**Enter the following information:**
+1. Select an existing **Software Installation** or equivalent request item.
+2. Open the request form.
+3. Enter the information below in the available fields.
 
-**Summary:**\
+**Short Description / Request Summary**
+
 `Need Audacity installed`
 
-**Description:**
+**Business Justification / Description**
 
-> The employee requires Audacity for work-related audio editing on computer Office1. The installation cannot be completed because Windows requests administrator credentials. Please review the software request and assist with installation according to company IT policies.
+> The employee requires Audacity for work-related audio editing on computer Office1. Windows requests administrator credentials during installation, and the employee does not have local administrative privileges. IT assistance is required to review, approve, and install the application according to company policy.
 
-**Goal:** Clearly communicate what the employee needs and what is preventing the installation.
-
-**Why this matters:**
-
-A well-written ticket reduces unnecessary questions and helps technicians understand the request without repeatedly contacting the employee.
-
-**Screenshot 3:** New ticket form showing the Summary and Description.
-
-### Step 4: Document Contact and Device Information
-
-**Action:**
-
-Complete the following fields:
-
-| Field        | Value           |
-| ------------ | --------------- |
-| Contact Info | 435-555-1234    |
-| Device Info  | HP Laptop/Win11 |
-
-**Goal:** Provide the technician with the information needed to contact the employee and identify the affected device.
+**Goal:** Clearly explain what software is needed, why it is needed, and what is blocking installation.
 
 **Why this matters:**
 
-Contact information supports communication, while device information helps the technician prepare for troubleshooting or installation.
+Clear documentation allows the IT team to understand the request without unnecessary back-and-forth communication.
 
-**Screenshot 4:** Contact and Device Information fields.
+**Screenshot 2: Software Request Form**
 
-### Step 5: Set Ticket Priority and Due Date
+Capture the request summary and business justification before submission.
 
-**Action:**
+### Step 4 — Document Employee and Device Information
 
-1. Locate the Priority dropdown.
-2. Select **High**.
-3. Locate the Due Date field.
-4. Select tomorrow's date, relative to the day the lab is performed.
+**Action**
 
-**Goal:** Indicate the urgency of the request and establish a target date.
+Enter the following information in the software request form where supported:
 
-**Why this matters:**
+| Field               | Value           |
+| ------------------- | --------------- |
+| Contact Information | 435-555-1234    |
+| Computer Name       | Office1         |
+| Device Information  | HP Laptop/Win11 |
+| Requested Software  | Audacity        |
+| Category            | Software        |
 
-Ticket priority helps IT teams organize their workloads. Due dates provide a target for follow-up and help prevent requests from being overlooked.
+If the catalog item does not provide dedicated contact or device fields, include this information in the request description or additional details field.
 
-**Note:** High priority is specified by this lab. In a real organization, priority should normally follow the company's impact and urgency guidelines.
-
-**Screenshot 5:** High Priority and Due Date fields.
-
-### Step 6: Assign the Ticket to the IT Technician
-
-**Action:**
-
-1. Locate the Assignee field.
-2. Select **Joshua Anderson**.
-3. Verify that the correct technician is selected.
-
-**Goal:** Route the software request to the person responsible for handling it.
+**Goal:** Give the IT technician enough information to identify the computer and contact the employee.
 
 **Why this matters:**
 
-Ticket assignment establishes ownership and accountability. It identifies who is responsible for reviewing and progressing the request.
+Accurate device and contact information helps the technician prepare for the installation and reduces troubleshooting delays.
 
-**Screenshot 6:** Ticket assignment showing Joshua Anderson.
+### Step 5 — Submit the Software Request
 
-### Step 7: Categorize the Request
+**Action**
 
-**Action:**
+1. Review the request details.
+2. Confirm the application name and business justification.
+3. Verify the contact and device information.
+4. Select **Submit** or **Order Now**, depending on the configured catalog.
+5. Open the submitted request.
+6. Record the generated request number.
 
-1. Locate the Category field.
-2. Select **Software**.
-3. Confirm the category selection.
-
-**Goal:** Classify the request so it can be organized, searched, and reported correctly.
-
-**Why this matters:**
-
-Ticket categories help IT teams identify common issues, analyze request trends, and improve service management.
-
-**Screenshot 7:** Software category selected.
-
-### Step 8: Submit and Verify the Ticket
-
-**Action:**
-
-1. Review the completed ticket.
-2. Confirm that all required fields are accurate.
-3. Click **Save**, **Create**, or **Submit**, depending on the Issue Trax interface.
-4. Verify that the ticket appears in the ticketing system.
-5. Record the ticket number if one is generated.
-
-**Goal:** Ensure the request has been successfully submitted and can be tracked.
+**Goal:** Create an official IT service request that can be tracked.
 
 **Expected result:**
 
-A new software installation request is created, categorized as Software, assigned to Joshua Anderson, and marked High priority with the required due date.
+ServiceNow records the software request and, in a standard catalog workflow, generates a Request (REQ) and a Requested Item (RITM).
 
-**Screenshot 8:** Saved ticket showing its details and status.
+**Screenshot 3: Submitted Request**
 
----
-
-## 5. Ticket Configuration Summary
-
-| Ticket Field | Configuration                                                                 |
-| ------------ | ----------------------------------------------------------------------------- |
-| Summary      | Need Audacity installed                                                       |
-| Description  | Audacity required for work; installation blocked by administrator credentials |
-| Contact Info | 435-555-1234                                                                  |
-| Device Info  | HP Laptop/Win11                                                               |
-| Priority     | High                                                                          |
-| Assignee     | Joshua Anderson                                                               |
-| Due Date     | Tomorrow                                                                      |
-| Category     | Software                                                                      |
-
-## 6. IT Service Management Workflow
-
-**Employee identifies need**
-
-↓
-
-**Installation blocked by administrator permissions**
-
-↓
-
-**Employee opens Issue Trax**
-
-↓
-
-**Software request ticket created**
-
-↓
-
-**Contact and device details documented**
-
-↓
-
-**Priority and due date configured**
-
-↓
-
-**Ticket assigned to Joshua Anderson**
-
-↓
-
-**Ticket categorized and submitted**
-
-↓
-
-**IT technician can review and process the request**
-
-This workflow demonstrates the beginning of a typical software request lifecycle.
-
-The lab specifically covers ticket creation and submission. Software approval, installation, testing, and ticket closure would be additional steps in a full IT support workflow.
+Capture the generated REQ/RITM number and request details.
 
 ---
 
-## 7. Project Validation
+## Phase 2: IT Support Review and Assignment
 
-Before completing the lab, I verify the following:
+### Step 6 — Locate the Requested Item (RITM)
 
-- The ticket summary is correct.
-- The description explains the business need and administrator restriction.
-- Contact information is accurate.
-- Device information is complete.
-- Priority is set to High.
-- Joshua Anderson is selected as assignee.
-- Due date is set to tomorrow.
-- Category is Software.
-- The ticket has been submitted and saved successfully.
+**Action**
 
-## 8. Business Value
+1. Open the ServiceNow application navigator.
+2. Search for **Requested Items** or **My Work**, depending on the instance configuration.
+3. Open the Requested Items list.
+4. Locate the Audacity request using its RITM number or short description.
+5. Open the record.
 
-This project demonstrates three important IT support practices.
+**Goal:** Review the submitted request from the IT Support perspective.
 
-**Security:** Standard users should not bypass administrative restrictions to install applications.
+**Why this matters:**
 
-**Accountability:** A documented ticket records the software request and identifies the technician responsible for handling it.
+A Requested Item represents the specific service or item being requested. It allows the IT team to track fulfillment separately from the overall request.
 
-**Efficiency:** Clear descriptions, correct categorization, and accurate assignments help IT teams process requests efficiently.
+**Screenshot 4: Requested Item Details**
 
-## 9. Skills Demonstrated
+Capture the RITM record showing Audacity and the request information.
 
-| Technical Skill            | Practical Application                           |
-| -------------------------- | ----------------------------------------------- |
-| IT Ticket Management       | Creating and submitting requests in Issue Trax  |
-| IT Documentation           | Writing an actionable software request          |
-| Windows Security           | Recognizing administrator access requirements   |
-| Ticket Prioritization      | Applying the required priority and due date     |
-| Ticket Assignment          | Routing the request to a specific technician    |
-| Service Request Management | Following a structured software request process |
-| Quality Assurance          | Verifying ticket details before submission      |
+### Step 7 — Set Priority and Target Date
 
-## 10. Project Outcome
+**Action**
 
-**Expected deliverable:** A successfully submitted Issue Trax ticket requesting installation of Audacity on the employee's Windows 11 computer.
+Open the appropriate Requested Item or Catalog Task record.
 
-The project demonstrates how I can document software requests, respect security restrictions, and route requests to the appropriate IT support technician.
+Set the following values where the instance provides editable fields:
 
-**Key takeaway:** Effective IT support is not only about fixing technical problems. It also involves documenting requests, maintaining security, and making sure the right person can take the next action.
+| Field            | Required Value  |
+| ---------------- | --------------- |
+| Priority         | High            |
+| Due Date         | Tomorrow's date |
+| Request Category | Software        |
+
+For example, if performing the lab on November 22, 2026, the due date is **November 23, 2026**.
+
+**Goal:** Establish the required priority and target date for the request.
+
+**Why this matters:**
+
+Priority and due dates help support teams organize work and manage expectations.
+
+**ServiceNow note:** Not every instance exposes an editable Priority or Due Date field on a Requested Item. Some use Catalog Tasks, Flow Designer, or custom request variables to manage these values. Use the corresponding available field without changing unrelated system settings.
+
+### Step 8 — Assign the Request to an IT Technician
+
+**Action**
+
+1. Open the fulfillment Catalog Task, if one is available.
+2. Locate the **Assignment group** field.
+3. Select the appropriate Software Support or Service Desk group, if configured.
+4. Locate the **Assigned to** field.
+5. Search for **Joshua Anderson**.
+6. Select the technician.
+7. Save the record.
+
+**Goal:** Assign responsibility for handling the software installation request.
+
+**Why this matters:**
+
+Ticket assignment creates accountability by identifying who is responsible for progressing the work.
+
+**Important:** Joshua Anderson must exist as an authorized user in the ServiceNow instance. If the user is unavailable, document the required assignee and do not substitute another technician without noting the difference.
+
+**Screenshot 5: Technician Assignment**
+
+Capture the request or catalog task showing Joshua Anderson as the assignee.
+
+### Step 9 — Verify the Request Details
+
+**Action**
+
+Review the submitted ServiceNow record and confirm:
+
+| Required Information | Expected Value          |
+| -------------------- | ----------------------- |
+| Summary              | Need Audacity installed |
+| Software             | Audacity                |
+| Computer             | Office1                 |
+| Device               | HP Laptop/Win11         |
+| Contact              | 435-555-1234            |
+| Category             | Software                |
+| Priority             | High                    |
+| Assigned to          | Joshua Anderson         |
+| Due Date             | Tomorrow                |
+| Request Record       | REQ/RITM created        |
+
+**Goal:** Verify that the information has been recorded accurately and that the request is ready for IT processing.
+
+**Why this matters:**
+
+Verification prevents misrouted tickets, missing information, and unnecessary delays.
+
+**Screenshot 6: Final Request Verification**
+
+Capture the final ServiceNow record showing the request details, assignment, and current status.
 
 ---
 
-**Project Category:** IT Support / Help Desk / IT Service Management
+# 6. Complete ITSM Request Lifecycle
 
-**Platform:** CompTIA Lab — Issue Trax
+The full software request lifecycle can be represented as follows.
+
+| Stage              | IT Activity                             | Purpose                          |
+| ------------------ | --------------------------------------- | -------------------------------- |
+| 1. Request         | Employee submits Audacity request       | Document the business need       |
+| 2. Record Creation | ServiceNow generates REQ/RITM           | Establish tracking               |
+| 3. Review          | IT reviews the request                  | Check requirements               |
+| 4. Approval        | Authorized approver reviews if required | Control software installation    |
+| 5. Assignment      | Task routed to Joshua Anderson          | Establish ownership              |
+| 6. Fulfillment     | Technician installs approved software   | Deliver requested service        |
+| 7. Verification    | Technician confirms functionality       | Validate successful installation |
+| 8. Closure         | Request/task closed with documentation  | Complete the service record      |
+
+**Scope clarification:** Steps 1–5 represent the requested submission and routing workflow. Steps 6–8 are optional extensions and are not claimed as completed in this project.
+
+---
+
+# 7. Project Validation Checklist
+
+- Accessed the ServiceNow Service Catalog.
+- Located the software installation request item.
+- Entered the Audacity installation summary.
+- Documented the business justification.
+- Recorded contact information.
+- Documented the affected Windows 11 computer.
+- Submitted the request successfully.
+- Located the generated REQ/RITM.
+- Verified the Software category.
+- Configured or documented the required High priority.
+- Set or documented the required due date.
+- Assigned or routed the fulfillment task to Joshua Anderson.
+- Verified the final request information.
+- Captured relevant screenshots.
+
+---
+
+# 8. Business Value
+
+### Security and Compliance
+
+Administrative permissions help protect corporate computers from unauthorized software installations.
+
+Using ServiceNow allows IT teams to manage the request without requiring employees to bypass security controls.
+
+### Operational Efficiency
+
+Centralized request documentation makes it easier for technicians to understand employee needs and determine the next action.
+
+### Accountability
+
+Ticket assignment identifies who is responsible for progressing the request.
+
+### Visibility and Traceability
+
+REQ and RITM records provide a way to track requests and review their status throughout the service management process.
+
+---
+
+# 9. Technical Skills Demonstrated
+
+| Skill                | Application                                  |
+| -------------------- | -------------------------------------------- |
+| ServiceNow ITSM      | Managing employee IT requests                |
+| Service Catalog      | Submitting software installation requests    |
+| Request Management   | Tracking REQ and RITM records                |
+| Ticket Documentation | Recording business and device details        |
+| Task Assignment      | Routing work to an IT technician             |
+| Windows Security     | Respecting administrator restrictions        |
+| IT Service Delivery  | Following structured support processes       |
+| Quality Assurance    | Reviewing and validating request information |
+
+---
+
+# 10. Key Takeaways
+
+A software installation request may appear simple, but it involves several important IT support responsibilities.
+
+**The employee needs software.**
+
+**Windows requires administrative permission.**
+
+**ServiceNow connects the employee's request with the authorized IT support process.**
+
+Through this project, I demonstrate how to document an IT request, track it in ServiceNow, verify the necessary information, and route it for technician review.
+
+---
+
+# 11. Project Outcome
+
+**Expected outcome:** A documented ServiceNow software installation request for Audacity, including the employee's business justification, device information, requested priority, target date, and technician assignment.
+
+This project demonstrates practical IT Service Management skills involving ServiceNow request handling, technical documentation, access control awareness, and IT support coordination.
+
+**Professional takeaway:** Reliable IT support is not only about installing software. It is about delivering services through a secure, documented, and accountable process.
+
+---
+
+**Technology:** ServiceNow | Windows 11 | ITSM
+
+**Project Type:** IT Service Request Management
 
 **Author:** Liliane Konissi
 
+## **Your GitHub screenshot plan**
+
+Capture these six screenshots from your actual ServiceNow environment. This is the recommended order for the README.
+
+| Screenshot | What to capture            | GitHub filename               |
+| ---------- | -------------------------- | ----------------------------- |
+| 1          | Service Catalog            | `01-service-catalog.png`      |
+| 2          | Audacity request form      | `02-software-request.png`     |
+| 3          | Submitted REQ/RITM         | `03-submitted-request.png`    |
+| 4          | Requested Item details     | `04-requested-item.png`       |
+| 5          | Assigned technician/task   | `05-task-assignment.png`      |
+| 6          | Final request verification | `06-request-verification.png` |
+
+Save these in an `images` folder in your GitHub repository.
+
+**Important ServiceNow distinction:** An Incident is generally used to restore a disrupted service. A Service Catalog Request is appropriate for obtaining software. Also, assignment, priority, and due-date fields depend on the instance configuration; they might belong to the RITM or a Catalog Task.&#x20;
+
+[image](https://www.google.com/s2/favicons?domain=https://www.servicenow.com\&sz=32)
+
+ServiceNow+2
+
+
+
+**Recommended GitHub repository name:** `servicenow-software-request-management`
+
+**Recommended GitHub description:** *End-to-end ServiceNow IT Service Catalog project demonstrating software installation requests, REQ/RITM tracking, task assignment, Windows security, and IT support workflow.*
+
+You can use the official [ServiceNow documentation](https://www.servicenow.com/docs/r/it-service-management/incident-management/create-an-incident.html?utm_source=chatgpt.com) for comparison, but the README above intentionally uses the Service Catalog workflow rather than converting the request into an incident.
