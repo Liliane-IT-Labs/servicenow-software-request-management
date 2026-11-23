@@ -1,7 +1,5 @@
 # issue-trax-software-request-management
 
-Here is a **professional, GitHub-ready README project** based on your CompTIA lab. It explains the business problem, the goal of every step, and how a Help Desk professional handles a software installation request.
-
 The project focuses on **IT ticket management, software request handling, access permissions, and IT support workflow.**
 
 # IT Help Desk Project: Managing a Software Installation Request Using Issue Trax
