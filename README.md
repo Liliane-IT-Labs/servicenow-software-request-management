@@ -71,8 +71,6 @@ The goal is to demonstrate how a software installation request moves through the
 | Requested Priority  | High                  |
 | Category            | Software              |
 
-**Project scope:** This walkthrough recreates the original CompTIA ticket submission scenario in ServiceNow. Software installation, approval, and closure are discussed as optional fulfillment steps and should only be marked completed after actual testing.
-
 ---
 
 ## 4. Project Architecture
